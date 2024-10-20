@@ -79,14 +79,33 @@ body {
 }
 
 .rating-scale {
-  display: flex;
-  gap: 0.5rem;
-  justify-content: space-between;
-  padding: 1.5rem;
+  position: relative;
   background: #f8fafc;
   border-radius: 1rem;
   margin: 1.5rem 0;
   box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+  padding: 1.5rem 0; /* Remove horizontal padding to allow full-width scroll */
+}
+
+/* Recommendation scale container */
+#recommendation-scale {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0 1.5rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  white-space: nowrap;
+  /* Ensure the container doesn't collapse */
+  min-width: 100%;
+  /* Force horizontal scroll layout */
+  flex-wrap: nowrap;
+}
+
+/* Hide scrollbar for Chrome/Safari/Opera */
+#recommendation-scale::-webkit-scrollbar {
+  display: none;
 }
 
 .scale-number {
@@ -102,6 +121,8 @@ body {
   border: 2px solid #e2e8f0;
   font-weight: 600;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  /* Prevent shrinking */
+  flex: 0 0 auto;
 }
 
 .scale-number:hover {
@@ -296,5 +317,77 @@ body {
 
   .feedback-card {
     padding: 1.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .rating-scale {
+    padding: 1rem 0;
+    margin: 1rem 0;
+  }
+
+  #recommendation-scale {
+    gap: 0.35rem;
+    padding: 0 1rem;
+    /* Ensure proper touch scrolling */
+    -webkit-overflow-scrolling: touch;
+    /* Force container to take full width */
+    width: 100%;
+  }
+
+  .scale-number {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 0.875rem;
+  }
+
+  /* Add text above the scale */
+  .rating-scale .text-center {
+    padding: 0 1rem 1rem 1rem;
+  }
+}
+
+/* Title adjustment for small screens */
+@media (max-width: 640px) {
+  #overall-experience {
+    font-size: 1.5rem;
+    padding: 0 1rem;
+  }
+}
+
+/* Ensure the container for everything is properly set */
+#final-step {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.logo-container {
+  text-align: center;
+  padding: 2rem 2rem 1rem;
+  background: white;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.hospital-logo {
+  width: 120px;
+  height: auto;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hospital-logo:hover {
+  transform: scale(1.05);
+}
+
+/* Update the mobile responsive styles */
+@media (max-width: 640px) {
+  .logo-container {
+    padding: 1.5rem 1.5rem 0.75rem;
+  }
+
+  .hospital-logo {
+    width: 90px;
   }
 }
