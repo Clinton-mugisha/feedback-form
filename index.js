@@ -133,12 +133,9 @@ function submitFeedback() {
     feedback.email = document.getElementById('email').value;
     feedback.phone = document.getElementById('phone').value;
     feedback.comments = document.getElementById('comments').value;
-
-    // Hide form and show success message
     document.querySelectorAll('.step, .nav-buttons').forEach(el => el.style.display = 'none');
     document.getElementById('success-message').style.display = 'block';
-
-    // Log feedback data (replace with your actual submission logic)
+    
     console.log('Feedback submitted:', feedback);
 }
 
