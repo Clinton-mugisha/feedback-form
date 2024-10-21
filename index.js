@@ -26,7 +26,7 @@ services.forEach((service, index) => {
             <div class="feedback-card">
                 <h3 class="service-title">${service}</h3>
                 <div class="stars" data-service="${service}">
-                    ${[5,4,3,2,1].map(num => `
+                    ${[1,2,3,4,5].map(num => `
                         <span class="star" data-rating="${num}">★</span>
                     `).join('')}
                 </div>
